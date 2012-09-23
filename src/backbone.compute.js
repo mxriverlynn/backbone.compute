@@ -49,7 +49,7 @@ Backbone.Compute = (function(Backbone, _){
       this.set(fieldName, value);
 
       return value;
-    }
+    };
 
     var computedFunc = function(){
       var cb = _.bind(fireCallback, this);
@@ -60,12 +60,12 @@ Backbone.Compute = (function(Backbone, _){
       }
 
       return cb();
-    }
+    };
 
     computedFunc.computedField = true;
 
     return computedFunc;
-  };
+  }
 
   // The raw API for computed fields. Determines whether
   // you are attempting to initialize the model or define

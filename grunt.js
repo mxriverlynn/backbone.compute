@@ -34,10 +34,6 @@ module.exports = function(grunt) {
         src: ['<banner:meta.banner>', '<config:rig.build.dest>'],
         dest: 'lib/backbone.compute.min.js'
       },
-      amd: {
-        src: ['<banner:meta.banner>', '<config:rig.amd.dest>'],
-        dest: 'lib/amd/backbone.compute.min.js'
-      }
     },
 
     jasmine : {
