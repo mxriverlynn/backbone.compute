@@ -126,4 +126,35 @@ describe("computed fields", function(){
 
   });
 
+  describe("when updating multiple fields that are dependend upon by a computed field", function(){
+    var handler;
+
+    beforeEach(function(){
+      handler = jasmine.createSpy("computed field func");
+
+      var Model = Backbone.Model.extend({
+        initialize: function(){
+          Backbone.Compute(this);
+        },
+
+        computedField: Backbone.Compute("computedField", ["f1", "f2"], handler)
+      });
+
+      model = new Model({
+        f1: "foo",
+        f2: "bar"
+      });
+
+      model.set({
+        f1: "boo",
+        f2: "far"
+      });
+    });
+
+    it("should call the computed field function once for the model initializer and once for setting all of the fields", function(){
+      expect(handler.callCount).toBe(2);
+    });
+
+  });
+
 });
