@@ -1,0 +1,50 @@
+{
+  "name": "Backbone.Compute",
+  "description": "Computed fields for Backbone.Model",
+  "version": "0.0.0",
+  "homepage": "https://github.com/derickbailey/backbone.compute",
+  "keywords": [
+    "backbone",
+    "plugin",
+    "computed",
+    "field",
+    "model",
+    "client",
+    "browser"
+  ],
+
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/derickbailey/backbone.compute/blob/master/LICENSE.md"
+    }
+  ],
+
+  "scripts": {
+    "test" : "grunt jasmine",
+    "start" : "grunt jasmine-server"
+  },
+
+  "author": {
+    "name": "Derick Bailey",
+    "email": "derickbailey@gmail.com",
+    "web": "http://derickbailey.lostechies.com"
+  },
+
+  "bugs": {
+    "web": "https://github.com/derickbailey/backbone.compute/issues"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/derickbailey/backbone.compute.git"
+  },
+
+  "github": "https://github.com/derickbailey/backbone.compute",
+
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-jasmine-runner": "latest",
+    "grunt-rigger": "*"
+  }
+}
