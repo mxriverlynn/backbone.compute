@@ -88,4 +88,42 @@ describe("computed fields", function(){
     });
   });
 
+  describe("when updating a field that is dependend upon by a computed field", function(){
+    var handler;
+
+    var Model = Backbone.Model.extend({
+      initialize: function(){
+        Backbone.Compute(this);
+      },
+
+      computedField: Backbone.Compute("computedField", ["f1", "f2"], function(fields){
+        fieldList = fields;
+        return fields.f1 + "-" + fields.f2
+      })
+    });
+
+    beforeEach(function(){
+      model = new Model({
+        f1: "foo",
+        f2: "bar"
+      });
+
+      handler = jasmine.createSpy("change handler");
+      model.on("change:computedField", handler);
+      
+      model.set({
+        f1: "boo"
+      });
+    });
+
+    it("should `set` the computed field", function(){
+      expect(model.get("computedField")).toEqual("boo-bar");
+    });
+
+    it("should trigger a `change` event for the computed field", function(){
+      expect(handler).toHaveBeenCalled();
+    });
+
+  });
+
 });
