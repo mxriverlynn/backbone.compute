@@ -9,15 +9,15 @@ from the links below.
 
 ### Standard Builds
 
-* Development: [backbone.marionette.js](https://raw.github.com/marionettejs/backbone.marionette/master/lib/backbone.marionette.js)
+* Development: [backbone.compute.js](https://raw.github.com/derickbailey/backbone.compute/master/lib/backbone.compute.js)
 
-* Production: [backbone.marionette.min.js](https://raw.github.com/marionettejs/backbone.marionette/master/lib/backbone.marionette.min.js)
+* Production: [backbone.compute.min.js](https://raw.github.com/derickbailey/backbone.compute/master/lib/backbone.compute.min.js)
 
 ### RequireJS (AMD) Builds
 
-* Development: [backbone.marionette.js](https://raw.github.com/marionettejs/backbone.marionette/master/lib/amd/backbone.marionette.js)
+* Development: [backbone.compute.js](https://raw.github.com/derickbailey/backbone.compute/master/lib/amd/backbone.compute.js)
 
-* Production: [backbone.marionette.min.js](https://raw.github.com/marionettejs/backbone.marionette/master/lib/amd/backbone.marionette.min.js)
+* Production: [backbone.compute.min.js](https://raw.github.com/derickbailey/backbone.compute/master/lib/amd/backbone.compute.min.js)
 
 ## Basic Use
 
