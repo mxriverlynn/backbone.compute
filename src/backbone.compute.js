@@ -1,5 +1,11 @@
 Backbone.Compute = (function(Backbone, _){
 
+  // Model Initializer
+  // -----------------
+  //
+  // Initializes all of the computed fields for your
+  // model. Call `Backbone.Compute(this);` from within your
+  // model's `initialize` function.
   function initializeModel(obj){
     for(var field in obj){
       if (obj[field] && obj[field].computedField){
@@ -8,6 +14,25 @@ Backbone.Compute = (function(Backbone, _){
     }
   }
 
+  // Computed Field Definition And Handler
+  // -------------------------------------
+  //
+  // Handles both the definition and execution of
+  // computed fields on models.
+  //
+  // The `fieldName` parameter is the name of the field
+  // to `set` in your model, when the dependent fields change
+  // and the computed field value is calculated
+  //
+  // The `fieldList` parameter can either be a single
+  // string, or an array of strings, representing the
+  // fields on which this computed field relies.
+  //
+  // The `callback` parameter is the computed field
+  // calculator function. This callback recieves a
+  // `fields` parameter. It is an object iteral that
+  // contains the name/value pairs for the fields that
+  // this computed field depends on.
   function computeField(fieldName, fieldList, callback){
     fieldList = _.flatten([fieldList]);
     var length = fieldList.length;
@@ -42,6 +67,9 @@ Backbone.Compute = (function(Backbone, _){
     return computedFunc;
   };
 
+  // The raw API for computed fields. Determines whether
+  // you are attempting to initialize the model or define
+  // a computed field, and call the correct behavior.
   var Compute = function(){
     if (arguments.length === 1){
       return initializeModel(arguments[0]);
