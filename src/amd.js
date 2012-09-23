@@ -1,18 +1,17 @@
 (function (root, factory) {
   if (typeof exports === 'object') {
 
-    var jquery = require('jquery');
     var underscore = require('underscore');
     var backbone = require('backbone');
 
-    module.exports = factory(jquery, underscore, backbone);
+    module.exports = factory(underscore, backbone);
 
   } else if (typeof define === 'function' && define.amd) {
 
-    define(['jquery', 'underscore', 'backbone'], factory);
+    define(['underscore', 'backbone'], factory);
 
   } 
-}(this, function ($, _, Backbone) {
+}(this, function (_, Backbone) {
 
   //= backbone.compute.js
   return Backbone.Compute; 
