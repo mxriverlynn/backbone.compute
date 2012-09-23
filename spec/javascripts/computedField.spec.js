@@ -1,22 +1,62 @@
 describe("computed field", function(){
 
   describe("when computation is done for a single field", function(){
+    var model, fieldList;
+
+    var Model = Backbone.Model.extend({
+      initialize: function(){
+        Backbone.Compute(this);
+      },
+
+      computedField: Backbone.Compute("computedField", "anotherField", function(fields){
+        fieldList = fields;
+        return fields.anotherField + "-bar"
+      })
+    });
+
+    beforeEach(function(){
+      model = new Model({
+        anotherField: "foo"
+      });
+    });
+
     it("should provide the specified field in the computation function", function(){
-      throw "not yet implemented";
+      expect(fieldList).toHaveOwnProperty("anotherField");
     });
 
     it("should `set` the computed field on the model to the returned value", function(){
-      throw "not yet implemented";
+      expect(model.get("computedField")).toEqual("foo-bar");
     });
   });
 
   describe("when computation is done for an array of fields", function(){
-    it("should provide the specified fields in the computation function", function(){
-      throw "not yet implemented";
+    var model, fieldList;
+
+    var Model = Backbone.Model.extend({
+      initialize: function(){
+        Backbone.Compute(this);
+      },
+
+      computedField: Backbone.Compute("computedField", ["f1", "f2"], function(fields){
+        fieldList = fields;
+        return fields.f1 + "-" + fields.f2
+      })
+    });
+
+    beforeEach(function(){
+      model = new Model({
+        f1: "foo",
+        f2: "bar"
+      });
+    });
+
+    it("should provide the specified field in the computation function", function(){
+      expect(fieldList).toHaveOwnProperty("f1");
+      expect(fieldList).toHaveOwnProperty("f2");
     });
 
     it("should `set` the computed field on the model to the returned value", function(){
-      throw "not yet implemented";
+      expect(model.get("computedField")).toEqual("foo-bar");
     });
   });
 
