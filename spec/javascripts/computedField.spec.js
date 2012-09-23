@@ -126,7 +126,7 @@ describe("computed fields", function(){
 
   });
 
-  describe("when updating multiple fields that are dependend upon by a computed field", function(){
+  xdescribe("when updating multiple fields that are dependend upon by a computed field", function(){
     var handler;
 
     beforeEach(function(){
