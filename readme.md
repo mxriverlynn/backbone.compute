@@ -36,7 +36,6 @@ var Model = Backbone.Model.extend({
   someField: {
     fields: ["f1", "f2"], 
     compute: function(fields){
-      fieldList = fields;
       return fields.f1 + "-" + fields.f2
     }
   }
