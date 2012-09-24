@@ -1,7 +1,7 @@
 {
   "name": "Backbone.Compute",
   "description": "Computed fields for Backbone.Model",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "https://github.com/derickbailey/backbone.compute",
   "keywords": [
     "backbone",
