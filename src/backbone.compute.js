@@ -9,14 +9,12 @@ Backbone.Compute = (function(Backbone, _){
   function initializeModel(obj){
     for(var field in obj){
       var computeAttr = obj[field];
-      if (computeAttr
-          && computeAttr.fields
-          && computeAttr.compute
-         ){
-
+      
+      if (computeAttr && computeAttr.fields && computeAttr.compute){
         obj[field] = computeField(field, computeAttr.fields, computeAttr.compute);
         obj[field].call(obj);
       }
+
     }
   }
 
