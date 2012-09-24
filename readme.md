@@ -33,10 +33,13 @@ var Model = Backbone.Model.extend({
   // tell it what field to `set` on the model
   // tell it what fields this one depends on
   // give it a callback function to compute the value when any dependent field changes
-  computedField: Backbone.Compute("computedField", ["f1", "f2"], function(fields){
-    fieldList = fields;
-    return fields.f1 + "-" + fields.f2
-  })
+  someField: {
+    fields: ["f1", "f2"], 
+    compute: function(fields){
+      fieldList = fields;
+      return fields.f1 + "-" + fields.f2
+    }
+  }
 
 });
 
@@ -46,14 +49,14 @@ var model = new Model({
 });
 
 // get the current value
-model.get("computedField"); // => "foo-bar"
+model.get("someField"); // => "foo-bar"
 
 // re-run the computation, `set` the current value and return it
-model.computedField(); // => "foo-bar"
+model.someField(); // => "foo-bar"
 
 
 // Handle "change" events for the computed field
-model.on("change:computedField", function(){
+model.on("change:someField", function(){
   // do stuff when the computed field changes
 });
 
@@ -64,8 +67,8 @@ model.set({
 });
 
 // get the updated value
-model.get("computedField"); // => "boo-far"
-model.computedField(); // => "boo-far"
+model.get("someField"); // => "boo-far"
+model.someField(); // => "boo-far"
 ```
 
 ## License

@@ -8,10 +8,13 @@ describe("computed fields", function(){
         Backbone.Compute(this);
       },
 
-      computedField: Backbone.Compute("computedField", "anotherField", function(fields){
-        fieldList = fields;
-        return fields.anotherField + "-bar"
-      })
+      computedField: {
+        fields: "anotherField", 
+        compute: function(fields){
+          fieldList = fields;
+          return fields.anotherField + "-bar"
+        }
+      }
     });
 
     beforeEach(function(){
@@ -37,10 +40,13 @@ describe("computed fields", function(){
         Backbone.Compute(this);
       },
 
-      computedField: Backbone.Compute("computedField", ["f1", "f2"], function(fields){
-        fieldList = fields;
-        return fields.f1 + "-" + fields.f2
-      })
+      computedField: {
+        fields: ["f1", "f2"], 
+        compute: function(fields){
+          fieldList = fields;
+          return fields.f1 + "-" + fields.f2
+        }
+      }
     });
 
     beforeEach(function(){
@@ -68,10 +74,13 @@ describe("computed fields", function(){
         Backbone.Compute(this);
       },
 
-      computedField: Backbone.Compute("computedField", ["f1", "f2"], function(fields){
-        fieldList = fields;
-        return fields.f1 + "-" + fields.f2
-      })
+      computedField: {
+        fields: ["f1", "f2"], 
+        compute: function(fields){
+          fieldList = fields;
+          return fields.f1 + "-" + fields.f2
+        }
+      }
     });
 
     beforeEach(function(){
@@ -96,10 +105,13 @@ describe("computed fields", function(){
         Backbone.Compute(this);
       },
 
-      computedField: Backbone.Compute("computedField", ["f1", "f2"], function(fields){
-        fieldList = fields;
-        return fields.f1 + "-" + fields.f2
-      })
+      computedField: {
+        fields: ["f1", "f2"], 
+        compute: function(fields){
+          fieldList = fields;
+          return fields.f1 + "-" + fields.f2
+        }
+      }
     });
 
     beforeEach(function(){
@@ -137,7 +149,10 @@ describe("computed fields", function(){
           Backbone.Compute(this);
         },
 
-        computedField: Backbone.Compute("computedField", ["f1", "f2"], handler)
+        computedField: {
+          fields: ["f1", "f2"], 
+          compute: handler
+        }
       });
 
       model = new Model({

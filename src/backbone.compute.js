@@ -8,7 +8,13 @@ Backbone.Compute = (function(Backbone, _){
   // model's `initialize` function.
   function initializeModel(obj){
     for(var field in obj){
-      if (obj[field] && obj[field].computedField){
+      var computeAttr = obj[field];
+      if (computeAttr
+          && computeAttr.fields
+          && computeAttr.compute
+         ){
+
+        obj[field] = computeField(field, computeAttr.fields, computeAttr.compute);
         obj[field].call(obj);
       }
     }
@@ -70,12 +76,8 @@ Backbone.Compute = (function(Backbone, _){
   // The raw API for computed fields. Determines whether
   // you are attempting to initialize the model or define
   // a computed field, and call the correct behavior.
-  var Compute = function(){
-    if (arguments.length === 1){
-      return initializeModel(arguments[0]);
-    } else {
-      return computeField.apply(null, arguments);
-    }
+  var Compute = function(model){
+    return initializeModel(model);
   };
 
   return Compute;
